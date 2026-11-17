@@ -107,3 +107,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .steps{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:8px;font-size:15px;color:var(--soft)}.steps b{color:var(--ink);font-weight:500;display:inline-block;min-width:4.5em}
 button.pill{font:inherit;cursor:pointer}
 @media(max-width:900px){.sphere{display:none}h1{font-size:clamp(34px,9.6vw,52px);text-wrap:balance}.lead{font-size:17px}.cta{flex-wrap:wrap}.shot{margin-top:36px}.final{padding:64px 0;margin-top:64px}}
+
+.ex{margin-top:28px;border:1px solid #2a2a2a;border-radius:14px;background:#050505;padding:14px;max-width:520px}
+.ex-q{display:flex;gap:10px;align-items:center;border:1px solid #333;border-radius:999px;padding:10px 16px;font:400 13px var(--mono);color:#888}
+.ex-q b{color:#fff;font-weight:500;font-size:15px}
+.ex-r{margin-top:12px;padding:12px 14px;border-radius:10px;background:#0d0d0d;display:grid;gap:4px}
+.ex-r span{font:400 11.5px var(--mono);color:#888}
+.ex-r b{font-weight:500;font-size:16px;color:#fff}
+.ex-r em{font-style:normal;font-size:14px;color:#a8e6a0}
+.ex-n{margin-top:10px;font:400 11.5px var(--mono);color:#777}
