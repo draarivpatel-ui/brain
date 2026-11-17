@@ -103,4 +103,6 @@ console.log(JSON.stringify(out, null, 1).slice(0, 6000));
 
 // North star (read by `gel north-star`): common-word search over 5,000 saved sessions, Brain vs `grep -rl`.
 const big5 = out.corpus.at(-1);
-writeFileSync(join(new URL("..", import.meta.url).pathname, "docs", "north-star", "result.json"), JSON.stringify({ value: big5.searchCommonMs, baseline: big5.grepCommonMs, unit: "ms", measuredAt: new Date().toISOString(), sessions: big5.sessions }, null, 2) + "\n");
+const ns = { value: big5.searchCommonMs, baseline: big5.grepCommonMs, unit: "ms", measuredAt: new Date().toISOString(), sessions: big5.sessions };
+writeFileSync(join(new URL("..", import.meta.url).pathname, "docs", "north-star", "result.json"), JSON.stringify(ns, null, 2) + "\n");
+console.log(JSON.stringify(ns)); // last line: `gel north-star --measure` parses it
