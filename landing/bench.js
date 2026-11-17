@@ -3,6 +3,12 @@
   const $ = (id) => document.getElementById(id);
   const N = (n) => n.toLocaleString();
   const ms = (n) => (n >= 1000 ? (n / 1000).toFixed(2) + " s" : n + " ms");
+  // Background: every measured number, as a wall of text behind the whole page (like code behind ponytail).
+  const words = []; const walk = (o, path) => { if (o == null) return; if (typeof o === "number") words.push(path.replace(/([a-z])([A-Z])/g,"$1 $2").toLowerCase().replace(/(\d+)s\b/,"$1 sessions").replace(/(\d+)m\b/,"$1 messages").replace(/ ms$| kb$| mb$| mbps$/,(x)=>x.toUpperCase()===" MBPS"?" MB/s":x).replace(/Ms$/, " ms").replace(/MB$/, " MB").replace(/KB$/, " KB") + " " + o); else if (Array.isArray(o)) o.forEach((x, i) => walk(x, (x && (x.sessions ? x.sessions + "s" : x.messages ? x.messages + "m" : "")) || path + i)); else if (typeof o === "object") for (const k in o) if (k !== "meta" && k !== "detail") walk(o[k], path ? path + "." + k : k); };
+  walk(d.corpus, "corpus"); walk(d.session, "session"); walk(d.redaction, "redact"); walk(d.share, "share");
+  const bg = document.createElement("div"); bg.id = "numbg"; bg.setAttribute("aria-hidden", "true");
+  const lines = []; for (let i = 0; i < 90; i++) { let l = ""; for (let j = 0; j < 14; j++) l += words[(i * 7 + j * 3) % words.length].replace(/\./g, " ") + "   "; lines.push(l); }
+  bg.textContent = lines.join("\n"); document.body.prepend(bg);
   const m = d.meta, c = d.corpus, big = c[c.length - 1], s = d.session, r = d.redaction;
   $("bench-meta").textContent = `Measured ${m.date} on ${m.cpu}, ${m.cores} cores, ${m.ramGB} GB, ${m.os}, ${m.runtime}. ${m.note}`;
   const vsRows = c.map((x) => ({ n: x.sessions, items: [["Brain", x.searchCommonMs, 1], ["grep", x.grepCommonMs]] }));
