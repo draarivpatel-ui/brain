@@ -142,3 +142,8 @@ button.pill{font:inherit;cursor:pointer}
 @keyframes numdrift{from{transform:translateY(0)}to{transform:translateY(-35%)}}
 .ticker,main,footer{position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){#numbg{animation:none}}
+
+.hero-install{margin:0 0 16px;font-size:15px;padding:12px 14px 12px 18px;border-color:#3a3a5a;box-shadow:0 0 0 4px rgba(122,162,255,.08)}
+.hstats{display:flex;gap:28px;margin:26px 0 22px;flex-wrap:wrap}.hstats div{display:grid;gap:2px}.hstats b{font:300 34px/1.1 var(--sans);color:#fff}.hstats span{font:400 12px var(--mono);color:#888}
+@media(max-width:900px){.hstats{gap:18px}.hstats b{font-size:26px}}
+@media(max-width:700px){#numbg{color:rgba(255,255,255,.04)}.hstats{flex-wrap:nowrap;gap:14px}.hstats b{font-size:22px}.hstats span{font-size:10.5px}.hero-install{display:flex;justify-content:space-between}}

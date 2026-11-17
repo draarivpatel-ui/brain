@@ -9,6 +9,8 @@
   const bg = document.createElement("div"); bg.id = "numbg"; bg.setAttribute("aria-hidden", "true");
   const lines = []; for (let i = 0; i < 90; i++) { let l = ""; for (let j = 0; j < 14; j++) l += words[(i * 7 + j * 3) % words.length] + "   "; lines.push(l); }
   bg.textContent = lines.join("\n"); document.body.prepend(bg);
+  const hs = (i, v) => { const e = document.getElementById("hs" + i); if (e) e.textContent = v; };
+  hs(1, (d.corpus.at(-1).searchCommonMs < 1000 ? Math.round(d.corpus.at(-1).searchCommonMs) + " ms" : (d.corpus.at(-1).searchCommonMs / 1000).toFixed(1) + " s")); hs(2, d.redaction.hidden + " of " + d.redaction.planted);
   const m = d.meta, c = d.corpus, big = c[c.length - 1], s = d.session, r = d.redaction;
   $("bench-meta").textContent = `Measured ${m.date} on ${m.cpu}, ${m.cores} cores, ${m.ramGB} GB, ${m.os}, ${m.runtime}. ${m.note}`;
   const vsRows = c.map((x) => ({ n: x.sessions, items: [["Brain", x.searchCommonMs, 1], ["grep", x.grepCommonMs]] }));
