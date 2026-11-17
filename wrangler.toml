@@ -1,0 +1,8 @@
+name = "flisk-brain"
+compatibility_date = "2026-10-01"
+
+routes = [{ pattern = "brain.flisk.si", custom_domain = true }]
+
+# The landing page is plain static files, no server code.
+[assets]
+directory = "./landing"
