@@ -1,6 +1,6 @@
 {
   "name": "@flisk-sh/brain",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A hub for your Claude Code sessions: search, read and share them. Local first, nothing uploaded unless you say so.",
   "type": "module",
   "license": "MIT",
