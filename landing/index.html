@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brain: one memory for your coding agents</title>
+<meta name="description" content="Brain reads your Claude Code history on your own computer, so you can search every session and find how you solved something last time.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Cpath d='M8 11l6 5-6 5M17 22h8' stroke='%23b49cff' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span>&gt;_</span> brain</a>
+  <div class="links">
+    <a class="hide" href="#storage">History</a><a class="hide" href="#integrations">Integrations</a><a class="hide" href="#privacy">Privacy</a><a class="hide" href="#connect">Try it</a>
+    <a class="pill white" href="#connect">Try it</a>
+  </div>
+</div></nav>
+<div class="ticker" aria-hidden="true"><div class="run">
+  <span>claude-code</span><i>/</i><span>runs on your computer</span><i>/</i><span>secrets hidden</span><i>/</i><span>search every session</span><i>/</i><span>nothing uploaded</span><i>/</i>
+  <span>claude-code</span><i>/</i><span>runs on your computer</span><i>/</i><span>secrets hidden</span><i>/</i><span>search every session</span><i>/</i><span>nothing uploaded</span><i>/</i>
+</div></div>
+
+<main id="top">
+<header class="hero"><div class="wrap">
+  <div class="hero-grid">
+    <div>
+      <div class="kicker">Brain &middot; memory for your coding agents</div>
+      <h1>Your agents.<span class="l2 holo">One memory.</span></h1>
+      <p class="lead">Every session you have had with Claude Code, in one place on your computer. Search it, read it, and answer &ldquo;how did I fix this last time?&rdquo;</p>
+      <div class="cta"><a class="pill white" href="#connect">Try it</a><a class="pill" href="#storage">How it works &darr;</a></div>
+      <div class="install"><span><b>$</b> node bin/brain.mjs serve</span><button data-copy="node bin/brain.mjs serve">Copy</button></div>
+    </div>
+    <figure class="sphere"><canvas id="sphere" width="880" height="880" role="img" aria-label="A rotating sphere of dots, one per agent session"></canvas>
+      <figcaption>One dot per session.</figcaption></figure>
+  </div>
+
+</div></header>
+
+<section id="storage"><div class="wrap">
+  <div class="split">
+    <div>
+      <div class="kicker">01 &middot; History</div>
+      <h2>Everything your agent did.<span class="l2">Still there.</span></h2>
+      <p class="sub">Claude Code already saves every conversation on your computer. Brain reads those files and turns them into a list you can browse and search.</p>
+    </div>
+    <ul class="list">
+      <li>Lists every session with its project, branch and date</li>
+      <li>Full conversation: your prompts, the answers, the tools used</li>
+      <li>Shows which files were edited</li>
+      <li>Reads your existing history, nothing to set up</li>
+      <li>Fast: it keeps a small index so the list opens instantly</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="collaboration"><div class="wrap">
+  <div class="split">
+    <div class="term"><div class="bar-top"><i></i><i></i><i></i></div>
+<pre><span class="c"># see your latest sessions</span>
+<span class="v">$</span> node bin/brain.mjs list 10
+
+<span class="c"># find an old fix</span>
+<span class="v">$</span> node bin/brain.mjs search token refresh
+
+<span class="c"># browse it all in the browser</span>
+<span class="v">$</span> node bin/brain.mjs serve
+<span class="g">&check;</span> http://localhost:4711  <span class="c">(this computer only)</span></pre></div>
+    <div>
+      <div class="kicker">02 &middot; Search</div>
+      <h2>Find it in seconds.<span class="l2">Not in an hour.</span></h2>
+      <p class="sub">Type a few words. Brain looks through every prompt and answer you have ever had and shows the session and the exact line.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="intelligence"><div class="wrap">
+  <div class="kicker">03 &middot; Ask your agent</div>
+  <h2>Your agent can look<span class="l2">back too.</span></h2>
+  <p class="sub">Brain ships a Claude Code skill. Ask &ldquo;how did I fix this last time?&rdquo; and Claude searches your history and answers with the session and date.</p>
+  <div class="cards">
+    <div class="card hot"><span class="tag2">Skill</span><h3>skill/brain/SKILL.md</h3><p>Copy it into your Claude Code skills folder.</p></div>
+    <div class="card"><span class="tag2">Next</span><h3>Share a session</h3><p>Send a link to the whole conversation instead of a summary. Not built yet.</p></div>
+    <div class="card"><span class="tag2">Next</span><h3>Teams</h3><p>One shared history for a team, with private by default. Not built yet.</p></div>
+  </div>
+</div></section>
+
+<section id="integrations"><div class="wrap">
+  <div class="kicker">04 &middot; Agents</div>
+  <h2>Claude Code today.<span class="l2">More next.</span></h2>
+  <p class="sub">Each agent gets its own small reader that turns its history into one common format, so Brain never depends on a single tool.</p>
+  <div class="logos"><span class="on">Claude Code</span><span class="soon">Codex</span><span class="soon">Cursor</span></div>
+  <p class="sub" style="margin-top:18px;font-size:14px;color:var(--faint)">Dashed means planned, not shipped.</p>
+</div></section>
+
+<section id="privacy"><div class="wrap">
+  <div class="kicker">05 &middot; Privacy</div>
+  <h2>Stays on your computer.<span class="l2">Secrets stay hidden.</span></h2>
+  <div class="cards">
+    <div class="card"><span class="tag2">Local</span><h3>Nothing is uploaded</h3><p>Brain only reads files already on your machine. The viewer is reachable from this computer only.</p></div>
+    <div class="card"><span class="tag2">Redaction</span><h3>Keys and tokens hidden</h3><p>API keys, tokens and private keys are masked before anything is shown.</p></div>
+    <div class="card"><span class="tag2">Read only</span><h3>Your history is not changed</h3><p>Brain never edits or deletes your Claude Code files.</p></div>
+  </div>
+</div></section>
+
+<section id="connect" class="final"><div class="wrap">
+  <div class="kicker">06 &middot; Try it</div>
+  <h2>Look back at your work.<span class="l2 holo">In one minute.</span></h2>
+  <div class="install" style="margin-top:28px"><span><b>$</b> node bin/brain.mjs serve</span><button data-copy="node bin/brain.mjs serve">Copy</button></div>
+  <p class="sub" style="margin-top:18px;font-size:14px;color:var(--faint)">Needs Node or Bun. Run it from the Brain folder.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>Brain</span><span>Early access. Runs on your computer. No accounts yet.</span></div></footer>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"name":"brain","version":"0.0.1","private":true,"type":"module","bin":{"brain":"bin/brain.mjs"},"scripts":{"serve":"node bin/brain.mjs serve"}}

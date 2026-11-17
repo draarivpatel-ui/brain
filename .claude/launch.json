@@ -1,1 +1,1 @@
-{"version":"0.0.1","configurations":[{"name":"hub","runtimeExecutable":"python3","runtimeArgs":["-m","http.server","4710","-d","site"],"port":4710}]}
+{"version":"0.0.1","configurations":[{"name":"hub","runtimeExecutable":"python3","runtimeArgs":["-m","http.server","4710","-d","landing"],"port":4710}]}
