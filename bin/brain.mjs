@@ -20,8 +20,10 @@ if (cmd === "list") {
   }
 } else if (cmd === "serve") {
   const port = Number(rest[0]) || 4711;
-  await serve(port);
-  console.log(`Brain is running at http://localhost:${port} (local only, reads ~/.claude/projects)`);
+  const server = await serve(port);
+  const got = server.address().port;
+  if (got !== port) console.log(`Port ${port} is in use (another Brain may be running), using ${got}.`);
+  console.log(`Brain is running at http://localhost:${got} (local only, reads ~/.claude/projects)`);
 } else if (cmd === "share") {
   const want = rest.find((a) => !a.startsWith("--")) || "latest";
   const rows = loadIndex();
