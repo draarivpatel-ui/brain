@@ -85,7 +85,7 @@ for (const msgs of [10, 100, 1000, 10000]) {
 // 3. Redaction: planted secrets (all fake), how many are hidden, how fast.
 const planted = [
   ["aws access key", "AKIA" + "ABCDEFGHIJKLMNOP"], ["github token", "ghp_" + "a".repeat(36)], ["github oauth", "gho_" + "b".repeat(36)], ["anthropic key", "sk-ant-" + "c".repeat(30)],
-  ["stripe live", "sk_live_" + "d".repeat(24)], ["stripe test", "sk_test_" + "e".repeat(24)], ["openai-style key", "sk-" + "f".repeat(40)], ["private key", "-----BEGIN RSA PRIVATE KEY-----\nMIIabc\n-----END RSA PRIVATE KEY-----"],
+  ["stripe live", "sk_live_" + "d".repeat(24)], ["stripe test", "sk_test_" + "e".repeat(24)], ["openai-style key", "sk-" + "f".repeat(40)], ["private key", "-----BEGIN " + "RSA PRIVATE KEY-----\nMIIabc\n-----END RSA PRIVATE KEY-----"],
   ["bearer token", "Bearer " + "g".repeat(40)], ["email", "jane.doe@example.com"], ["home path (mac)", "/Users/jane/work"], ["home path (linux)", "/home/jane/work"], ["url", "https://internal.example.com/a?token=1"], ["markdown link", "[docs](https://example.com/x)"],
 ];
 let hidden = 0; const detail = [];
@@ -100,3 +100,7 @@ writeFileSync(join(new URL("..", import.meta.url).pathname, "bench", "results.js
 copyFileSync(join(new URL("..", import.meta.url).pathname, "bench", "results.json"), join(new URL("..", import.meta.url).pathname, "landing", "bench.json"));
 rmSync(WORK, { recursive: true, force: true });
 console.log(JSON.stringify(out, null, 1).slice(0, 6000));
+
+// North star (read by `gel north-star`): common-word search over 5,000 saved sessions, Brain vs `grep -rl`.
+const big5 = out.corpus.at(-1);
+writeFileSync(join(new URL("..", import.meta.url).pathname, "bench", "north-star.json"), JSON.stringify({ value: big5.searchCommonMs, baseline: big5.grepCommonMs, unit: "ms", measuredAt: new Date().toISOString(), sessions: big5.sessions }, null, 2) + "\n");
