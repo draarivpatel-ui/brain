@@ -129,3 +129,11 @@ button.pill{font:inherit;cursor:pointer}
 .bt thead th{color:#888;font-weight:400}.bt td{color:#fff}.bt tr:last-child>*{border-bottom:0}
 .bnote{font:400 12.5px/1.7 var(--mono);color:#777;margin-top:16px}.bnote code{color:#bbb}
 @media(max-width:700px){.bgrid{grid-template-columns:1fr 1fr}.bc b{font-size:22px}}
+
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 28px}
+.vc{border:1px solid #222;border-radius:14px;padding:18px;background:#050505}
+.vc h4{font:300 20px var(--sans,Inter,system-ui);color:#fff;margin:0 0 6px}.vc p{font:400 12px var(--mono);color:#888;margin:0 0 14px}
+.vg{margin:0 0 14px}.vg em{display:block;font:400 11px var(--mono);color:#777;font-style:normal;margin-bottom:6px;text-transform:uppercase}
+.vr{display:grid;grid-template-columns:62px 1fr 70px;align-items:center;gap:8px;font:400 12px var(--mono);color:#aaa;margin:4px 0}
+.vr i{display:block;height:8px;border-radius:4px;background:#333}.vr.me i{background:linear-gradient(90deg,#7aa2ff,#c28bff)}.vr b{color:#fff;font-weight:400;text-align:right}
+@media(max-width:700px){.vs{grid-template-columns:1fr}}

@@ -1,9 +1,14 @@
 (async () => {
   let d; try { d = await (await fetch("/bench.json")).json(); } catch { document.getElementById("bench-meta").textContent = "The measurements could not load."; return; }
   const $ = (id) => document.getElementById(id);
+  const N = (n) => n.toLocaleString();
   const ms = (n) => (n >= 1000 ? (n / 1000).toFixed(2) + " s" : n + " ms");
   const m = d.meta, c = d.corpus, big = c[c.length - 1], s = d.session, r = d.redaction;
   $("bench-meta").textContent = `Measured ${m.date} on ${m.cpu}, ${m.cores} cores, ${m.ramGB} GB, ${m.os}, ${m.runtime}. ${m.note}`;
+  const vsRows = c.map((x) => ({ n: x.sessions, items: [["Brain", x.searchCommonMs, 1], ["grep", x.grepCommonMs]] }));
+  const vs2 = c.map((x) => ({ n: x.sessions, items: [["Brain", x.searchRareMs, 1], ["grep", x.grepRareMs], ["ripgrep", x.rgRareMs]] }));
+  const card = (title, note, data) => { const mx = Math.max(...data.flatMap((g) => g.items.map((i) => i[1] || 0))); return `<div class="vc"><h4>${title}</h4><p>${note}</p>${data.map((g) => `<div class="vg"><em>${N(g.n)} sessions</em>${g.items.filter((i) => i[1] != null).map(([k, v, me]) => `<div class="vr${me ? " me" : ""}"><span>${k}</span><i style="width:${Math.max(2, (v / mx) * 100)}%"></i><b>${ms(v)}</b></div>`).join("")}</div>`).join("")}</div>`; };
+  $("bench-vs").innerHTML = card("Search a common word", "Brain stops after 120 matches and shows the best ones. grep lists every file.", vsRows) + card("Search a word that is in one session", "Honest row: grep is faster here, because Brain also reads titles, tools and times for each session.", vs2);
   const tiles = [
     [ms(big.warmIndexMs), `open the list of ${big.sessions.toLocaleString()} sessions`], [ms(big.coldIndexMs), `first index of ${big.sessions.toLocaleString()} sessions (${big.totalMB} MB)`],
     [ms(big.searchCommonMs), "search a common word"], [ms(big.searchRareMs), "search one rare word across all"], [big.rssMB + " MB", "memory with 5,000 sessions"],
@@ -11,7 +16,6 @@
   ];
   $("bench-top").innerHTML = tiles.map(([v, l]) => `<div class="bc"><b>${v}</b><span>${l}</span></div>`).join("");
   const rows = (head, body) => `<thead><tr>${head.map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${body.map((r) => `<tr>${r.map((x, i) => `<${i ? "td" : "th scope=row"}>${x}</${i ? "td" : "th"}>`).join("")}</tr>`).join("")}</tbody>`;
-  const N = (n) => n.toLocaleString();
   $("bench-corpus").innerHTML = rows(["", ...c.map((x) => N(x.sessions) + " sessions")], [
     ["Total size", ...c.map((x) => x.totalMB + " MB")], ["First index (cold)", ...c.map((x) => ms(x.coldIndexMs))], ["Per session, cold", ...c.map((x) => x.perSessionColdMs + " ms")],
     ["Open the list (warm)", ...c.map((x) => ms(x.warmIndexMs))], ["Find the files", ...c.map((x) => ms(x.listFilesMs))], ["Index file", ...c.map((x) => x.indexCacheKB + " KB")],

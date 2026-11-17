@@ -4,6 +4,7 @@ import { mkdirSync, writeFileSync, rmSync, statSync, copyFileSync, readdirSync }
 import { join } from "node:path";
 import { tmpdir, cpus, platform, arch, totalmem } from "node:os";
 import { gzipSync } from "node:zlib";
+import { spawnSync } from "node:child_process";
 
 const WORK = join(tmpdir(), "brain-bench-" + process.pid);
 rmSync(WORK, { recursive: true, force: true }); mkdirSync(WORK, { recursive: true });
@@ -60,8 +61,13 @@ for (const n of [100, 1000, 5000]) {
   const two = await time(() => search("fix null", f), 3);
   const none = await time(() => search("qqqqnomatch", f), 3);
   const list = await time(() => listFiles(), 5);
+  const sh = (bin, args) => { const t = now(); const r = spawnSync(bin, args, { stdio: "ignore" }); return r.error ? null : now() - t; };
+  const best = (bin, args) => { const a = [sh(bin, args), sh(bin, args), sh(bin, args)]; return a.includes(null) ? null : median(a); };
+  const grepRare = best("/usr/bin/grep", ["-rl", `zq${n - 1}x`, process.env.BRAIN_CLAUDE_DIR]);
+  const grepCommon = best("/usr/bin/grep", ["-rl", "checkout", process.env.BRAIN_CLAUDE_DIR]);
+  const rgRare = best("rg", ["-l", `zq${n - 1}x`, process.env.BRAIN_CLAUDE_DIR]);
   global.gc?.();
-  out.corpus.push({ sessions: n, files, totalMB: r1(bytes / 2 ** 20), coldIndexMs: r1(cold), perSessionColdMs: r2(cold / n), warmIndexMs: r1(warm), listFilesMs: r1(list), indexCacheKB: r1(cacheKB), searchRareMs: r1(rare), searchCommonMs: r1(common), searchTwoTermsMs: r1(two), searchNoMatchMs: r1(none), rssMB: Math.round(process.memoryUsage().rss / 2 ** 20) });
+  out.corpus.push({ sessions: n, files, totalMB: r1(bytes / 2 ** 20), coldIndexMs: r1(cold), perSessionColdMs: r2(cold / n), warmIndexMs: r1(warm), listFilesMs: r1(list), indexCacheKB: r1(cacheKB), searchRareMs: r1(rare), searchCommonMs: r1(common), searchTwoTermsMs: r1(two), searchNoMatchMs: r1(none), grepRareMs: grepRare && r1(grepRare), grepCommonMs: grepCommon && r1(grepCommon), rgRareMs: rgRare && r1(rgRare), rssMB: Math.round(process.memoryUsage().rss / 2 ** 20) });
 }
 rmSync(process.env.BRAIN_CLAUDE_DIR, { recursive: true, force: true });
 
