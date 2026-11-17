@@ -30,6 +30,24 @@ async function home() {
     if (q.value.trim()) { const hits = await get("/api/search?q=" + encodeURIComponent(q.value)); out.replaceChildren(table(hits, true)); }
   }, 300); };
 }
+function renderMessages(list, into) {
+  // Merge runs of assistant steps that only call tools into one block.
+  const rows = [];
+  for (const m of list) {
+    const prev = rows[rows.length - 1];
+    if (m.role === "assistant" && !m.text && prev && prev.role === "assistant" && !prev.text) prev.tools = prev.tools.concat(m.tools);
+    else rows.push({ role: m.role, text: m.text, tools: [...m.tools] });
+  }
+  for (const m of rows) {
+    const d = el("div", "msg " + m.role); d.append(el("div", "who", m.role === "user" ? "You" : "Agent"));
+    if (m.text) {
+      const long = m.text.length > 600, b = el("div", "body", long ? m.text.slice(0, 600) + "..." : m.text); d.append(b);
+      if (long) { const more = el("button", "more", "Show all " + m.text.length.toLocaleString() + " characters"); more.onclick = () => { b.textContent = m.text; more.remove(); }; d.append(more); }
+    }
+    for (const t of m.tools) { if (!t.summary && !t.name) continue; const l = el("div", "tool"); l.append(el("b", "", t.name + " "), document.createTextNode(t.summary)); d.append(l); }
+    into.append(d);
+  }
+}
 async function session(id) {
   const s = await get("/api/session?id=" + encodeURIComponent(id));
   if (s.error) return root.replaceChildren(el("div", "empty", "Session not found."));
@@ -37,12 +55,7 @@ async function session(id) {
   const meta = el("div", "meta");
   for (const x of [s.agent, s.model, proj(s.cwd), s.branch, when(s.start), s.messages.length + " messages", s.files.length + " files edited"]) if (x) meta.append(el("span", "", x));
   root.replaceChildren(back, el("h1", "", s.title), meta);
-  for (const m of s.messages) {
-    const d = el("div", "msg " + m.role); d.append(el("div", "who", m.role === "user" ? "You" : "Agent"));
-    if (m.text) d.append(el("div", "body", m.text));
-    for (const t of m.tools) { const l = el("div", "tool"); l.append(el("b", "", t.name + " "), document.createTextNode(t.summary)); d.append(l); }
-    root.append(d);
-  }
+  renderMessages(s.messages, root);
 }
 function route() { const m = location.hash.match(/^#\/s\/(.+)$/); m ? session(m[1]) : home(); window.scrollTo(0, 0); }
 addEventListener("hashchange", route); route();

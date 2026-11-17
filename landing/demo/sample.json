@@ -1,0 +1,25 @@
+{
+  "title": "Checkout fails with a 500 after the discount code step",
+  "agent": "claude-code",
+  "model": "claude-sonnet-5",
+  "cwd": "acme-shop",
+  "branch": "fix/discount-500",
+  "start": "2026-11-12T09:41:00Z",
+  "shared": "2026-11-12T10:20:00Z",
+  "files": ["src/checkout/discount.ts", "src/checkout/discount.test.ts"],
+  "messages": [
+    {"role":"user","text":"Checkout returns a 500 when a customer applies a discount code. It works without a code. Please find the cause and fix it.","tools":[]},
+    {"role":"assistant","text":"I'll start by reproducing it and reading the discount step.","tools":[
+      {"name":"Bash","summary":"npm test -- checkout"},
+      {"name":"Read","summary":"src/checkout/discount.ts"},
+      {"name":"Read","summary":"src/checkout/cart.ts"}]},
+    {"role":"assistant","text":"Found it. `applyDiscount` reads `code.percent` but expired codes come back from the database with `percent: null`, so the total becomes NaN and the payment call throws. Fixing it so expired codes are rejected with a clear message, and adding a test.","tools":[]},
+    {"role":"assistant","text":"","tools":[
+      {"name":"Edit","summary":"src/checkout/discount.ts"},
+      {"name":"Write","summary":"src/checkout/discount.test.ts"},
+      {"name":"Bash","summary":"npm test -- checkout"}]},
+    {"role":"assistant","text":"All 14 checkout tests pass, including the new one for an expired code. The customer now sees \"This code has expired\" instead of a server error.","tools":[]},
+    {"role":"user","text":"Great. Does the same bug exist for gift cards?","tools":[]},
+    {"role":"assistant","text":"Checked: gift cards use a fixed amount, not a percent, so they cannot produce NaN. No change needed there.","tools":[{"name":"Read","summary":"src/checkout/giftcard.ts"}]}
+  ]
+}

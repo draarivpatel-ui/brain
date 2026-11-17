@@ -93,3 +93,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media(max-width:900px){.wrap{padding:0 16px}.links a.hide{display:none}.hero{padding-top:48px}.hero-grid,.split{grid-template-columns:1fr}.sphere{justify-self:center;max-width:320px}
 .cards{grid-template-columns:1fr}section{padding-top:72px}.app-body{grid-template-columns:1fr}.side{display:none}.stats{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr 90px}.row span:nth-child(3),.row span:nth-child(4){display:none}}
 @media(prefers-reduced-motion:reduce){.ticker .run{animation:none}}
+
+.shot{margin:56px 0 0;border:1px solid var(--line,#222);border-radius:14px;overflow:hidden;background:#000}
+.shot .bar-top{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line,#222)}
+.shot .bar-top i{width:9px;height:9px;border-radius:50%;background:#333}
+.shot .bar-top span{margin-left:10px;font:11px "Geist Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#777}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{padding:12px 14px;border-top:1px solid var(--line,#222);font-size:13px;color:#888}
+.shot figcaption a{color:#b49cff}
