@@ -3,6 +3,12 @@
 Memory for your coding agents. Brain reads your Claude Code history on your own computer, so you can browse and search every past session. Separate from the Flisk CLI site.
 
 ```bash
+npx @flisk-sh/brain serve            # install-free: viewer at http://localhost:4711
+```
+
+From a checkout:
+
+```bash
 node bin/brain.mjs list 10            # latest sessions
 node bin/brain.mjs search token fix   # find an old fix
 node bin/brain.mjs serve              # viewer at http://localhost:4711 (this computer only)

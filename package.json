@@ -1,1 +1,14 @@
-{"name":"brain","version":"0.0.1","private":true,"type":"module","bin":{"brain":"bin/brain.mjs"},"scripts":{"serve":"node bin/brain.mjs serve"}}
+{
+  "name": "@flisk-sh/brain",
+  "version": "0.1.0",
+  "description": "A hub for your Claude Code sessions: search, read and share them. Local first, nothing uploaded unless you say so.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://brain.flisk.si",
+  "repository": { "type": "git", "url": "git+https://github.com/flisk-sh/brain.git" },
+  "bin": { "brain": "bin/brain.mjs" },
+  "files": ["bin", "lib", "app", "LICENSE", "README.md"],
+  "engines": { "node": ">=18" },
+  "publishConfig": { "access": "public" },
+  "scripts": { "serve": "node bin/brain.mjs serve" }
+}
