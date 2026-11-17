@@ -6,6 +6,7 @@ Memory for your coding agents. Brain reads your Claude Code history on your own 
 node bin/brain.mjs list 10            # latest sessions
 node bin/brain.mjs search token fix   # find an old fix
 node bin/brain.mjs serve              # viewer at http://localhost:4711 (this computer only)
+node bin/brain.mjs share latest       # shows what would be shared; add --yes to upload and get a link
 ```
 
 Works with Node or Bun. Reads `~/.claude/projects`, never changes it, hides keys and tokens.
@@ -13,6 +14,7 @@ Works with Node or Bun. Reads `~/.claude/projects`, never changes it, hides keys
 - `lib/` reader, redaction, index, server
 - `app/` the viewer
 - `skill/brain/SKILL.md` Claude Code skill
-- `landing/` landing page
+- `landing/` landing page and shared-session page
+- `worker/` Cloudflare Worker for shared sessions
 
-Not built yet: sharing a session, teams, other agents (Codex, Cursor).
+Shared sessions live at `brain.flisk.si/s/<id>` (unlisted link, 5 MB limit, deletable with the key printed at upload). Not built yet: accounts, teams, other agents (Codex, Cursor).
