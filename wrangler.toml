@@ -1,8 +1,15 @@
 name = "flisk-brain"
+main = "worker/index.js"
 compatibility_date = "2026-10-01"
 
 routes = [{ pattern = "brain.flisk.si", custom_domain = true }]
 
-# The landing page is plain static files, no server code.
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "810fb7915701414e9e03b8f3ab79d98a"
+
+# Static landing page. The Worker answers /api/* and /s/* first.
 [assets]
 directory = "./landing"
+binding = "ASSETS"
+run_worker_first = ["/api/*", "/s/*"]

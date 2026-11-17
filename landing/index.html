@@ -68,7 +68,10 @@
 
 <span class="c"># browse it all in the browser</span>
 <span class="v">$</span> node bin/brain.mjs serve
-<span class="g">&check;</span> http://localhost:4711  <span class="c">(this computer only)</span></pre></div>
+<span class="g">&check;</span> http://localhost:4711  <span class="c">(this computer only)</span>
+
+<span class="c"># share one session as a link</span>
+<span class="v">$</span> node bin/brain.mjs share latest --yes</pre></div>
     <div>
       <div class="kicker">02 &middot; Search</div>
       <h2>Find it in seconds.<span class="l2">Not in an hour.</span></h2>
@@ -83,7 +86,7 @@
   <p class="sub">Brain ships a Claude Code skill. Ask &ldquo;how did I fix this last time?&rdquo; and Claude searches your history and answers with the session and date.</p>
   <div class="cards">
     <div class="card hot"><span class="tag2">Skill</span><h3>skill/brain/SKILL.md</h3><p>Copy it into your Claude Code skills folder.</p></div>
-    <div class="card"><span class="tag2">Next</span><h3>Share a session</h3><p>Send a link to the whole conversation instead of a summary. Not built yet.</p></div>
+    <div class="card"><span class="tag2">Share</span><h3>brain share</h3><p>Send a link to the whole conversation instead of a summary. Keys are hidden, and you can delete the link any time.</p></div>
     <div class="card"><span class="tag2">Next</span><h3>Teams</h3><p>One shared history for a team, with private by default. Not built yet.</p></div>
   </div>
 </div></section>
@@ -100,7 +103,7 @@
   <div class="kicker">05 &middot; Privacy</div>
   <h2>Stays on your computer.<span class="l2">Secrets stay hidden.</span></h2>
   <div class="cards">
-    <div class="card"><span class="tag2">Local</span><h3>Nothing is uploaded</h3><p>Brain only reads files already on your machine. The viewer is reachable from this computer only.</p></div>
+    <div class="card"><span class="tag2">Local</span><h3>Nothing leaves unless you share</h3><p>Brain reads files already on your machine. Only <code>brain share --yes</code> uploads, and only that one session.</p></div>
     <div class="card"><span class="tag2">Redaction</span><h3>Keys and tokens hidden</h3><p>API keys, tokens and private keys are masked before anything is shown.</p></div>
     <div class="card"><span class="tag2">Read only</span><h3>Your history is not changed</h3><p>Brain never edits or deletes your Claude Code files.</p></div>
   </div>
