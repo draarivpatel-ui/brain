@@ -65,9 +65,10 @@ for (const n of [100, 1000, 5000]) {
   const best = (bin, args) => { const a = [sh(bin, args), sh(bin, args), sh(bin, args)]; return a.includes(null) ? null : median(a); };
   const grepRare = best("/usr/bin/grep", ["-rl", `zq${n - 1}x`, process.env.BRAIN_CLAUDE_DIR]);
   const grepCommon = best("/usr/bin/grep", ["-rl", "checkout", process.env.BRAIN_CLAUDE_DIR]);
+  const rgCommon = best("rg", ["-l", "checkout", process.env.BRAIN_CLAUDE_DIR]);
   const rgRare = best("rg", ["-l", `zq${n - 1}x`, process.env.BRAIN_CLAUDE_DIR]);
   global.gc?.();
-  out.corpus.push({ sessions: n, files, totalMB: r1(bytes / 2 ** 20), coldIndexMs: r1(cold), perSessionColdMs: r2(cold / n), warmIndexMs: r1(warm), listFilesMs: r1(list), indexCacheKB: r1(cacheKB), searchRareMs: r1(rare), searchCommonMs: r1(common), searchTwoTermsMs: r1(two), searchNoMatchMs: r1(none), grepRareMs: grepRare && r1(grepRare), grepCommonMs: grepCommon && r1(grepCommon), rgRareMs: rgRare && r1(rgRare), rssMB: Math.round(process.memoryUsage().rss / 2 ** 20) });
+  out.corpus.push({ sessions: n, files, totalMB: r1(bytes / 2 ** 20), coldIndexMs: r1(cold), perSessionColdMs: r2(cold / n), warmIndexMs: r1(warm), listFilesMs: r1(list), indexCacheKB: r1(cacheKB), searchRareMs: r1(rare), searchCommonMs: r1(common), searchTwoTermsMs: r1(two), searchNoMatchMs: r1(none), grepRareMs: grepRare && r1(grepRare), grepCommonMs: grepCommon && r1(grepCommon), rgRareMs: rgRare && r1(rgRare), rgCommonMs: rgCommon && r1(rgCommon), rssMB: Math.round(process.memoryUsage().rss / 2 ** 20) });
 }
 rmSync(process.env.BRAIN_CLAUDE_DIR, { recursive: true, force: true });
 
@@ -101,6 +102,6 @@ copyFileSync(join(new URL("..", import.meta.url).pathname, "bench", "results.jso
 rmSync(WORK, { recursive: true, force: true });
 console.log(JSON.stringify(out, null, 1).slice(0, 6000));
 
-// North star (read by `gel north-star`): common-word search over 5,000 saved sessions, Brain vs `grep -rl`.
+// North star (read by `gel north-star`): common-word search over 5,000 saved sessions, Brain vs ripgrep `rg -l`.
 const big5 = out.corpus.at(-1);
-writeFileSync(join(new URL("..", import.meta.url).pathname, "docs", "north-star", "result.json"), JSON.stringify({ value: big5.searchCommonMs, baseline: big5.grepCommonMs, unit: "ms", measuredAt: new Date().toISOString(), sessions: big5.sessions }, null, 2) + "\n");
+writeFileSync(join(new URL("..", import.meta.url).pathname, "docs", "north-star", "result.json"), JSON.stringify({ value: big5.searchCommonMs, baseline: big5.rgCommonMs ?? big5.grepCommonMs, baselineTool: big5.rgCommonMs ? "ripgrep" : "grep", grepMs: big5.grepCommonMs, unit: "ms", measuredAt: new Date().toISOString(), sessions: big5.sessions }, null, 2) + "\n");
