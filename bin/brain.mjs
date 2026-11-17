@@ -2,6 +2,7 @@
 import { loadIndex } from "../lib/index.mjs";
 import { listFiles, search, parseSession } from "../lib/claude-code.mjs";
 import { serve } from "../lib/server.mjs";
+import { tidyPaths } from "../lib/redact.mjs";
 
 const [cmd = "help", ...rest] = process.argv.slice(2);
 const when = (t) => (t || "").slice(0, 16).replace("T", " ");
@@ -27,11 +28,15 @@ if (cmd === "list") {
   const row = want === "latest" ? rows[0] : rows.find((r) => r.id.startsWith(want));
   if (!row) { console.error("No session matches " + want); process.exit(1); }
   const s = parseSession(listFiles().find((f) => f.id === row.id).path);
-  // Share the project name, not the full folder path.
+  // Share the project name, not the full folder path, and no absolute paths in the conversation.
+  const root = s.cwd || "";
+  s.files = s.files.map((f) => tidyPaths(f, root));
+  s.messages = s.messages.map((m) => ({ ...m, text: tidyPaths(m.text, root), tools: m.tools.map((t) => ({ ...t, summary: tidyPaths(t.summary, root) })) }));
   s.cwd = (s.cwd || "").split("/").filter(Boolean).slice(-1)[0] || "";
-  s.files = s.files.map((f) => f.split("/").slice(-2).join("/"));
   console.log(`Session: ${s.title}\n${s.messages.length} messages, ${s.files.length} files edited, project ${s.cwd}`);
   if (!rest.includes("--yes")) {
+    console.log("\nWhat the tool lines will show:");
+    for (const m of s.messages) for (const t of m.tools) console.log("  " + t.name + " " + t.summary.slice(0, 110));
     console.log("\nThis uploads the whole conversation (keys and tokens are hidden) to a link anyone with it can open.\nRun again with --yes to upload.");
     process.exit(0);
   }
