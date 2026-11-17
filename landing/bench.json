@@ -13,54 +13,63 @@
       "sessions": 100,
       "files": 100,
       "totalMB": 1.9,
-      "coldIndexMs": 17.3,
-      "perSessionColdMs": 0.17,
+      "coldIndexMs": 18.5,
+      "perSessionColdMs": 0.19,
       "warmIndexMs": 1.1,
       "listFilesMs": 0.6,
       "indexCacheKB": 35.5,
-      "searchRareMs": 20.1,
-      "searchCommonMs": 13,
-      "searchTwoTermsMs": 11.6,
-      "searchNoMatchMs": 8.4,
-      "rssMB": 45
+      "searchRareMs": 13.9,
+      "searchCommonMs": 12.5,
+      "searchTwoTermsMs": 12.5,
+      "searchNoMatchMs": 9.3,
+      "grepRareMs": 7.1,
+      "grepCommonMs": 7.6,
+      "rgRareMs": 96.8,
+      "rssMB": 37
     },
     {
       "sessions": 1000,
       "files": 1000,
       "totalMB": 18.8,
-      "coldIndexMs": 152.4,
-      "perSessionColdMs": 0.15,
-      "warmIndexMs": 6,
-      "listFilesMs": 3.7,
+      "coldIndexMs": 167.2,
+      "perSessionColdMs": 0.17,
+      "warmIndexMs": 5.6,
+      "listFilesMs": 4.2,
       "indexCacheKB": 354.6,
-      "searchRareMs": 93.1,
-      "searchCommonMs": 12.5,
+      "searchRareMs": 93.4,
+      "searchCommonMs": 13.9,
       "searchTwoTermsMs": 11.8,
-      "searchNoMatchMs": 81.2,
-      "rssMB": 55
+      "searchNoMatchMs": 92.9,
+      "grepRareMs": 47,
+      "grepCommonMs": 45.8,
+      "rgRareMs": 98.8,
+      "rssMB": 50
     },
     {
       "sessions": 5000,
       "files": 5000,
       "totalMB": 94.2,
-      "coldIndexMs": 790,
+      "coldIndexMs": 806.4,
       "perSessionColdMs": 0.16,
-      "warmIndexMs": 27.2,
-      "listFilesMs": 18,
+      "warmIndexMs": 33.2,
+      "listFilesMs": 19.4,
       "indexCacheKB": 1773.1,
-      "searchRareMs": 459.1,
-      "searchCommonMs": 12.7,
-      "searchTwoTermsMs": 12.5,
-      "searchNoMatchMs": 415.9,
-      "rssMB": 73
+      "searchRareMs": 809.7,
+      "searchCommonMs": 13.2,
+      "searchTwoTermsMs": 14.1,
+      "searchNoMatchMs": 453.4,
+      "grepRareMs": 248.5,
+      "grepCommonMs": 268.4,
+      "rgRareMs": 313.4,
+      "rssMB": 91
     }
   ],
   "session": [
     {
       "messages": 10,
       "fileKB": 4.8,
-      "parseMs": 0.05,
-      "parseMBps": 89,
+      "parseMs": 0.06,
+      "parseMBps": 80.4,
       "sharePayloadKB": 3.8,
       "shareGzipKB": 1.2,
       "underShareLimit": true
@@ -68,8 +77,8 @@
     {
       "messages": 100,
       "fileKB": 47.9,
-      "parseMs": 0.33,
-      "parseMBps": 142.8,
+      "parseMs": 0.39,
+      "parseMBps": 119.3,
       "sharePayloadKB": 35,
       "shareGzipKB": 7.5,
       "underShareLimit": true
@@ -77,8 +86,8 @@
     {
       "messages": 1000,
       "fileKB": 481.9,
-      "parseMs": 3.15,
-      "parseMBps": 149.2,
+      "parseMs": 3.48,
+      "parseMBps": 135.4,
       "sharePayloadKB": 350.5,
       "shareGzipKB": 64.3,
       "underShareLimit": true
@@ -86,8 +95,8 @@
     {
       "messages": 10000,
       "fileKB": 4822.4,
-      "parseMs": 32.3,
-      "parseMBps": 145.8,
+      "parseMs": 34.93,
+      "parseMBps": 134.8,
       "sharePayloadKB": 3507.2,
       "shareGzipKB": 630.2,
       "underShareLimit": true
@@ -155,8 +164,8 @@
       }
     ],
     "textKB": 658.7,
-    "redactMs": 2.94,
-    "redactMBps": 218.8
+    "redactMs": 3.08,
+    "redactMBps": 209.2
   },
   "share": {
     "limitMB": 5,
