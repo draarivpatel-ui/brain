@@ -147,3 +147,4 @@ button.pill{font:inherit;cursor:pointer}
 .hstats{display:flex;gap:28px;margin:26px 0 22px;flex-wrap:wrap}.hstats div{display:grid;gap:2px}.hstats b{font:300 34px/1.1 var(--sans);color:#fff}.hstats span{font:400 12px var(--mono);color:#888}
 @media(max-width:900px){.hstats{gap:18px}.hstats b{font-size:26px}}
 @media(max-width:700px){#numbg{color:rgba(255,255,255,.04)}.hstats{flex-wrap:nowrap;gap:14px}.hstats b{font-size:22px}.hstats span{font-size:10.5px}.hero-install{display:flex;justify-content:space-between}}
+@media(max-width:700px){.install button{min-height:40px;padding:8px 14px}.brand{display:inline-flex;align-items:center;min-height:40px}.bnote a{padding:10px 2px;display:inline-block}}
