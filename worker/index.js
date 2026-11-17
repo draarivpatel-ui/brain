@@ -21,13 +21,30 @@ function clean(s) {
   };
 }
 
+// Report only a problem (never a session, prompt or key) to traces.flisk.si. Off unless TRACE_KEY is set.
+function trace(env, ctx, route, kind, why, status) {
+  if (!env.TRACE_KEY) return;
+  const send = fetch((env.TRACES_URL || "https://traces.flisk.si") + "/v1/trace", {
+    method: "POST", headers: { authorization: "Bearer " + env.TRACE_KEY, "content-type": "application/json" },
+    body: JSON.stringify({ route, kind, why, status }),
+  }).catch(() => {});
+  ctx?.waitUntil?.(send);
+}
+
 export default {
-  async fetch(req, env) {
+  async fetch(req, env, ctx) {
+    try { return await handle(req, env, ctx); }
+    catch (e) { trace(env, ctx, new URL(req.url).pathname.replace(/[a-z0-9]{12}$/, ":id"), "error", "Unhandled error in the Brain Worker", 500); return json({ error: "Something went wrong." }, 500); }
+  },
+};
+
+async function handle(req, env, ctx) {
+  {
     const u = new URL(req.url);
     const p = u.pathname;
     if (req.method === "POST" && p === "/api/sessions") {
       const raw = await req.text();
-      if (raw.length > MAX) return json({ error: "Session is too large to share (limit 5 MB)." }, 413);
+      if (raw.length > MAX) { trace(env, ctx, "/api/sessions", "capped", "Shared session over the 5 MB limit", 413); return json({ error: "Session is too large to share (limit 5 MB)." }, 413); }
       let body; try { body = JSON.parse(raw); } catch { return json({ error: "Not JSON." }, 400); }
       const session = clean(body);
       if (!session) return json({ error: "Not a session." }, 400);
@@ -51,5 +68,5 @@ export default {
       return new Response(r.body, { headers: { "content-type": "text/html; charset=utf-8", "x-robots-tag": "noindex", "referrer-policy": "no-referrer" } });
     }
     return new Response("Not found", { status: 404 });
-  },
-};
+  }
+}

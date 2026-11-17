@@ -18,3 +18,5 @@ Works with Node or Bun. Reads `~/.claude/projects`, never changes it, hides keys
 - `worker/` Cloudflare Worker for shared sessions
 
 Shared sessions live at `brain.flisk.si/s/<id>` (unlisted link, 5 MB limit, deletable with the key printed at upload). Not built yet: accounts, teams, other agents (Codex, Cursor).
+
+Problems with the Worker itself (an unhandled error, a session over the limit) can be reported to [traces.flisk.si](https://github.com/flisk-sh/traces) by setting the `TRACE_KEY` secret. Only the route, kind and a fixed reason are sent, never a session. Without the key nothing is sent.
