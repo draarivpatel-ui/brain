@@ -116,3 +116,16 @@ button.pill{font:inherit;cursor:pointer}
 .ex-r b{font-weight:500;font-size:16px;color:#fff}
 .ex-r em{font-style:normal;font-size:14px;color:#a8e6a0}
 .ex-n{margin-top:10px;font:400 11.5px var(--mono);color:#777}
+
+#bench{padding:96px 0 40px}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 8px}
+.bc{border:1px solid #222;border-radius:14px;padding:16px;background:#050505;display:grid;gap:6px}
+.bc b{font:300 28px var(--sans,Inter,system-ui);color:#fff}.bc span{font:400 12px var(--mono);color:#888}
+.bh{font:400 15px var(--mono);color:#aaa;margin:36px 0 10px;font-weight:400}
+.bt{overflow-x:auto;border:1px solid #222;border-radius:14px}
+.bt table{width:100%;border-collapse:collapse;font:400 13px var(--mono);min-width:420px}
+.bt th,.bt td{padding:9px 14px;text-align:right;border-bottom:1px solid #161616;white-space:nowrap}
+.bt th:first-child,.bt td:first-child{text-align:left;color:#bbb;font-weight:400}
+.bt thead th{color:#888;font-weight:400}.bt td{color:#fff}.bt tr:last-child>*{border-bottom:0}
+.bnote{font:400 12.5px/1.7 var(--mono);color:#777;margin-top:16px}.bnote code{color:#bbb}
+@media(max-width:700px){.bgrid{grid-template-columns:1fr 1fr}.bc b{font-size:22px}}

@@ -15,7 +15,7 @@
 <nav><div class="wrap">
   <a class="brand" href="#top"><span>&gt;_</span> brain</a>
   <div class="links">
-    <a class="hide" href="#storage">History</a><a class="hide" href="#integrations">Integrations</a><a class="hide" href="#privacy">Privacy</a><a class="hide" href="#connect">Get Brain</a>
+    <a class="hide" href="#storage">History</a><a class="hide" href="#integrations">Integrations</a><a class="hide" href="#privacy">Privacy</a><a class="hide" href="#bench">Benchmarks</a><a class="hide" href="#connect">Get Brain</a>
     <a class="pill white" href="#connect">Get Brain</a>
   </div>
 </div></nav>
@@ -115,6 +115,20 @@
   </div>
 </div></section>
 
+<section id="bench"><div class="wrap">
+  <div class="kicker">Benchmarks</div>
+  <h2>Real numbers.<span class="l2">Measured, not promised.</span></h2>
+  <p class="sub" id="bench-meta">Loading the measurements...</p>
+  <div class="bgrid" id="bench-top"></div>
+  <h3 class="bh">Many sessions: how fast is the list and the search?</h3>
+  <div class="bt"><table id="bench-corpus"></table></div>
+  <h3 class="bh">One session: how big can it get?</h3>
+  <div class="bt"><table id="bench-session"></table></div>
+  <h3 class="bh">Hiding secrets: 14 fake secrets planted, how many are hidden?</h3>
+  <div class="bt"><table id="bench-redact"></table></div>
+  <p class="bnote">Run it yourself: <code>git clone https://github.com/flisk-sh/brain &amp;&amp; node bench/bench.mjs</code>. It builds the sessions, measures, and writes <a href="/bench.json">bench.json</a>. No real history is read. The search is a plain scan of the files, so a word that is not found reads every session: that is the slow row, and it is shown on purpose. A common word stops after 120 matches, which is why it is fast.</p>
+</div></section>
+
 <section id="connect" class="final"><div class="wrap">
   <div class="kicker">06 &middot; Get Brain</div>
   <h2>Brain runs on your computer.<span class="l2 holo">Not on your phone.</span></h2>
@@ -126,5 +140,6 @@
 
 <footer><div class="wrap"><span>Brain</span><span>Early access. Runs on your computer. No accounts yet.</span></div></footer>
 <script src="app.js"></script>
+<script src="bench.js"></script>
 </body>
 </html>
