@@ -22,7 +22,7 @@ async function home() {
   const bar = el("div", "bar"), q = el("input"); q.type = "search"; q.placeholder = "Search every session, prompt and answer..."; bar.append(q);
   const out = el("div"); root.append(bar, out);
   const all = await get("/api/sessions");
-  document.getElementById("count").textContent = all.length + " sessions, read from this computer";
+  document.getElementById("count").textContent = all.length + (all.length === 1 ? " session" : " sessions") + ", read from this computer";
   out.append(table(all));
   let timer;
   q.oninput = () => { clearTimeout(timer); timer = setTimeout(async () => {
