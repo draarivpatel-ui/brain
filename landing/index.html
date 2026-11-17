@@ -32,7 +32,11 @@
       <h1>Find how you fixed it<span class="l2 holo">last time.</span></h1>
       <p class="lead">Brain saves every Claude Code session on your computer. Search them, read them, and share one as a link.</p>
       <div class="cta"><a class="pill white" href="/sample.html">See a sample session</a><a class="pill" href="#connect">Get Brain</a></div>
-      <ol class="steps"><li><b>Save</b> every session, automatically</li><li><b>Search</b> by a word you remember</li><li><b>Share</b> one as a private link</li></ol>
+      <div class="ex" aria-label="Example: you search for a word, Brain shows the session where you fixed it">
+        <div class="ex-q"><span>You search</span><b>discount 500</b></div>
+        <div class="ex-r"><span class="ex-d">Oct 12 &middot; acme-shop</span><b>Checkout fails with a 500 after the discount code</b><em>Fixed: the code had no percent value. Added a check, tests pass.</em></div>
+        <div class="ex-n">Example. Brain finds the old session, so you don't solve it twice.</div>
+      </div>
     </div>
     <figure class="sphere"><canvas id="sphere" width="880" height="880" role="img" aria-label="A rotating sphere of dots, one per agent session"></canvas>
       <figcaption>One dot per session.</figcaption></figure>
