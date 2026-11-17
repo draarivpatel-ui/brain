@@ -30,8 +30,10 @@
     <div>
       <div class="kicker">Brain &middot; for Claude Code</div>
       <h1>Find how you fixed it<span class="l2 holo">last time.</span></h1>
-      <p class="lead">Brain saves every Claude Code session on your computer. Search them, read them, and share one as a link.</p>
-      <div class="cta"><a class="pill white" href="/sample.html">See a sample session</a><a class="pill" href="#connect">Get Brain</a></div>
+      <p class="lead">Every fix you made with Claude Code is already saved on your computer. Brain makes it searchable in seconds, so you never solve the same bug twice.</p>
+      <div class="install hero-install"><span><b>$</b> npx github:flisk-sh/brain serve</span><button data-copy="npx github:flisk-sh/brain serve">Copy</button></div>
+      <div class="cta"><a class="pill white" href="/sample.html">See a sample session</a><a class="pill" href="#bench">See the numbers</a></div>
+      <div class="hstats" id="hstats" aria-label="Measured numbers"><div><b id="hs1">...</b><span>to search 5,000 sessions</span></div><div><b id="hs2">...</b><span>secrets hidden</span></div><div><b>0</b><span>bytes uploaded</span></div></div>
       <div class="ex" aria-label="Example: you search for a word, Brain shows the session where you fixed it">
         <div class="ex-q"><span>You search</span><b>discount 500</b></div>
         <div class="ex-r"><span class="ex-d">Oct 12 &middot; acme-shop</span><b>Checkout fails with a 500 after the discount code</b><em>Fixed: the code had no percent value. Added a check, tests pass.</em></div>
