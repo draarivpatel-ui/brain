@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Brain: one memory for your coding agents</title>
-<meta name="description" content="Brain reads your Claude Code history on your own computer, so you can search every session and find how you solved something last time.">
+<title>Brain: find how you fixed it last time</title>
+<meta name="description" content="Brain saves every Claude Code session on your computer. Search them, read them, and share one as a link.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Cpath d='M8 11l6 5-6 5M17 22h8' stroke='%23b49cff' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +15,8 @@
 <nav><div class="wrap">
   <a class="brand" href="#top"><span>&gt;_</span> brain</a>
   <div class="links">
-    <a class="hide" href="#storage">History</a><a class="hide" href="#integrations">Integrations</a><a class="hide" href="#privacy">Privacy</a><a class="hide" href="#connect">Try it</a>
-    <a class="pill white" href="#connect">Try it</a>
+    <a class="hide" href="#storage">History</a><a class="hide" href="#integrations">Integrations</a><a class="hide" href="#privacy">Privacy</a><a class="hide" href="#connect">Get Brain</a>
+    <a class="pill white" href="#connect">Get Brain</a>
   </div>
 </div></nav>
 <div class="ticker" aria-hidden="true"><div class="run">
@@ -28,11 +28,11 @@
 <header class="hero"><div class="wrap">
   <div class="hero-grid">
     <div>
-      <div class="kicker">Brain &middot; memory for your coding agents</div>
-      <h1>Your agents.<span class="l2 holo">One memory.</span></h1>
-      <p class="lead">Every session you have had with Claude Code, in one place on your computer. Search it, read it, and answer &ldquo;how did I fix this last time?&rdquo;</p>
-      <div class="cta"><a class="pill white" href="#connect">Try it</a><a class="pill" href="#storage">How it works &darr;</a></div>
-      <div class="install"><span><b>$</b> node bin/brain.mjs serve</span><button data-copy="node bin/brain.mjs serve">Copy</button></div>
+      <div class="kicker">Brain &middot; for Claude Code</div>
+      <h1>Find how you fixed it<span class="l2 holo">last time.</span></h1>
+      <p class="lead">Brain saves every Claude Code session on your computer. Search them, read them, and share one as a link.</p>
+      <div class="cta"><a class="pill white" href="/sample.html">See a sample session</a><a class="pill" href="#connect">Get Brain</a></div>
+      <ol class="steps"><li><b>Save</b> every session, automatically</li><li><b>Search</b> by a word you remember</li><li><b>Share</b> one as a private link</li></ol>
     </div>
     <figure class="sphere"><canvas id="sphere" width="880" height="880" role="img" aria-label="A rotating sphere of dots, one per agent session"></canvas>
       <figcaption>One dot per session.</figcaption></figure>
@@ -112,10 +112,11 @@
 </div></section>
 
 <section id="connect" class="final"><div class="wrap">
-  <div class="kicker">06 &middot; Try it</div>
-  <h2>Look back at your work.<span class="l2 holo">In one minute.</span></h2>
-  <div class="install" style="margin-top:28px"><span><b>$</b> node bin/brain.mjs serve</span><button data-copy="node bin/brain.mjs serve">Copy</button></div>
-  <p class="sub" style="margin-top:18px;font-size:14px;color:var(--faint)">Needs Node or Bun. Run it from the Brain folder.</p>
+  <div class="kicker">06 &middot; Get Brain</div>
+  <h2>Brain runs on your computer.<span class="l2 holo">Not on your phone.</span></h2>
+  <p class="sub" style="margin:0 auto">Mac, Linux or Windows, with Node or Bun. Early access: install it from GitHub, then open it in your browser.</p>
+  <div class="install"><span><b>$</b> git clone https://github.com/flisk-sh/brain<br><b>$</b> cd brain &amp;&amp; node bin/brain.mjs serve</span><button data-copy="git clone https://github.com/flisk-sh/brain && cd brain && node bin/brain.mjs serve">Copy</button></div>
+  <div class="cta" style="margin-top:22px"><a class="pill white" href="/sample.html">See a sample first</a><button class="pill" data-copy="https://brain.flisk.si">Copy this page&rsquo;s link for your computer</button></div>
 </div></section>
 </main>
 
