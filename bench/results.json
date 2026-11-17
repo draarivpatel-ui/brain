@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "date": "2026-11-17",
+    "runtime": "Bun 1.4.4",
+    "cpu": "Apple M1",
+    "cores": 8,
+    "ramGB": 16,
+    "os": "darwin arm64",
+    "note": "Generated sessions of 40 messages, 15 tool calls. No real history is read."
+  },
+  "corpus": [
+    {
+      "sessions": 100,
+      "files": 100,
+      "totalMB": 1.9,
+      "coldIndexMs": 17.3,
+      "perSessionColdMs": 0.17,
+      "warmIndexMs": 1.1,
+      "listFilesMs": 0.6,
+      "indexCacheKB": 35.5,
+      "searchRareMs": 20.1,
+      "searchCommonMs": 13,
+      "searchTwoTermsMs": 11.6,
+      "searchNoMatchMs": 8.4,
+      "rssMB": 45
+    },
+    {
+      "sessions": 1000,
+      "files": 1000,
+      "totalMB": 18.8,
+      "coldIndexMs": 152.4,
+      "perSessionColdMs": 0.15,
+      "warmIndexMs": 6,
+      "listFilesMs": 3.7,
+      "indexCacheKB": 354.6,
+      "searchRareMs": 93.1,
+      "searchCommonMs": 12.5,
+      "searchTwoTermsMs": 11.8,
+      "searchNoMatchMs": 81.2,
+      "rssMB": 55
+    },
+    {
+      "sessions": 5000,
+      "files": 5000,
+      "totalMB": 94.2,
+      "coldIndexMs": 790,
+      "perSessionColdMs": 0.16,
+      "warmIndexMs": 27.2,
+      "listFilesMs": 18,
+      "indexCacheKB": 1773.1,
+      "searchRareMs": 459.1,
+      "searchCommonMs": 12.7,
+      "searchTwoTermsMs": 12.5,
+      "searchNoMatchMs": 415.9,
+      "rssMB": 73
+    }
+  ],
+  "session": [
+    {
+      "messages": 10,
+      "fileKB": 4.8,
+      "parseMs": 0.05,
+      "parseMBps": 89,
+      "sharePayloadKB": 3.8,
+      "shareGzipKB": 1.2,
+      "underShareLimit": true
+    },
+    {
+      "messages": 100,
+      "fileKB": 47.9,
+      "parseMs": 0.33,
+      "parseMBps": 142.8,
+      "sharePayloadKB": 35,
+      "shareGzipKB": 7.5,
+      "underShareLimit": true
+    },
+    {
+      "messages": 1000,
+      "fileKB": 481.9,
+      "parseMs": 3.15,
+      "parseMBps": 149.2,
+      "sharePayloadKB": 350.5,
+      "shareGzipKB": 64.3,
+      "underShareLimit": true
+    },
+    {
+      "messages": 10000,
+      "fileKB": 4822.4,
+      "parseMs": 32.3,
+      "parseMBps": 145.8,
+      "sharePayloadKB": 3507.2,
+      "shareGzipKB": 630.2,
+      "underShareLimit": true
+    }
+  ],
+  "redaction": {
+    "planted": 14,
+    "hidden": 14,
+    "detail": [
+      {
+        "name": "aws access key",
+        "hidden": true
+      },
+      {
+        "name": "github token",
+        "hidden": true
+      },
+      {
+        "name": "github oauth",
+        "hidden": true
+      },
+      {
+        "name": "anthropic key",
+        "hidden": true
+      },
+      {
+        "name": "stripe live",
+        "hidden": true
+      },
+      {
+        "name": "stripe test",
+        "hidden": true
+      },
+      {
+        "name": "openai-style key",
+        "hidden": true
+      },
+      {
+        "name": "private key",
+        "hidden": true
+      },
+      {
+        "name": "bearer token",
+        "hidden": true
+      },
+      {
+        "name": "email",
+        "hidden": true
+      },
+      {
+        "name": "home path (mac)",
+        "hidden": true
+      },
+      {
+        "name": "home path (linux)",
+        "hidden": true
+      },
+      {
+        "name": "url",
+        "hidden": true
+      },
+      {
+        "name": "markdown link",
+        "hidden": true
+      }
+    ],
+    "textKB": 658.7,
+    "redactMs": 2.94,
+    "redactMBps": 218.8
+  },
+  "share": {
+    "limitMB": 5,
+    "tidyPathsMicros": 1,
+    "tidyExample": "edit src/a.js and .../hosts"
+  }
+}
