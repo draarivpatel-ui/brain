@@ -1,7 +1,9 @@
 {
-  "value": 12.7,
-  "baseline": 272.9,
+  "value": 6.6,
+  "baseline": 168.8,
+  "baselineTool": "ripgrep",
+  "grepMs": 206.6,
   "unit": "ms",
-  "measuredAt": "2026-11-17T13:23:16.382Z",
+  "measuredAt": "2026-11-17T19:45:16.151Z",
   "sessions": 5000
 }

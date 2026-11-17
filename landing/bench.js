@@ -13,10 +13,10 @@
   hs(1, (d.corpus.at(-1).searchCommonMs < 1000 ? Math.round(d.corpus.at(-1).searchCommonMs) + " ms" : (d.corpus.at(-1).searchCommonMs / 1000).toFixed(1) + " s")); hs(2, d.redaction.hidden + " of " + d.redaction.planted);
   const m = d.meta, c = d.corpus, big = c[c.length - 1], s = d.session, r = d.redaction;
   $("bench-meta").textContent = `Measured ${m.date} on ${m.cpu}, ${m.cores} cores, ${m.ramGB} GB, ${m.os}, ${m.runtime}. ${m.note}`;
-  const vsRows = c.map((x) => ({ n: x.sessions, items: [["Brain", x.searchCommonMs, 1], ["grep", x.grepCommonMs]] }));
+  const vsRows = c.map((x) => ({ n: x.sessions, items: [["Brain", x.searchCommonMs, 1], ["ripgrep", x.rgCommonMs], ["grep", x.grepCommonMs]] }));
   const vs2 = c.map((x) => ({ n: x.sessions, items: [["Brain", x.searchRareMs, 1], ["grep", x.grepRareMs], ["ripgrep", x.rgRareMs]] }));
   const card = (title, note, data) => { const mx = Math.max(...data.flatMap((g) => g.items.map((i) => i[1] || 0))); return `<div class="vc"><h4>${title}</h4><p>${note}</p>${data.map((g) => `<div class="vg"><em>${N(g.n)} sessions</em>${g.items.filter((i) => i[1] != null).map(([k, v, me]) => `<div class="vr${me ? " me" : ""}"><span>${k}</span><i style="width:${Math.max(2, (v / mx) * 100)}%"></i><b>${ms(v)}</b></div>`).join("")}</div>`).join("")}</div>`; };
-  $("bench-vs").innerHTML = card("Search a common word", "Brain stops after 120 matches and shows the best ones. grep lists every file.", vsRows) + card("Search a word that is in one session", "Honest row: grep is faster here, because Brain also reads titles, tools and times for each session.", vs2);
+  $("bench-vs").innerHTML = card("Search a common word", "Brain stops after 120 matches and shows the best ones. ripgrep and grep list every file.", vsRows) + card("Search a word that is in one session", "Honest row: grep is faster here, because Brain also reads titles, tools and times for each session.", vs2);
   const tiles = [
     [ms(big.warmIndexMs), `open the list of ${big.sessions.toLocaleString()} sessions`], [ms(big.coldIndexMs), `first index of ${big.sessions.toLocaleString()} sessions (${big.totalMB} MB)`],
     [ms(big.searchCommonMs), "search a common word"], [ms(big.searchRareMs), "search one rare word across all"], [big.rssMB + " MB", "memory with 5,000 sessions"],
