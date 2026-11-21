@@ -9,8 +9,8 @@ a{color:inherit}code,.mono{font-family:var(--mono);font-size:.86em}
 .holo{background:var(--holo);-webkit-background-clip:text;background-clip:text;color:transparent}
 .kicker{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
-nav{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+nav{position:static;z-index:20;background:rgba(0,0,0,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:flex-start;height:48px;gap:16px}
 .brand{font:600 15px var(--mono);text-decoration:none;letter-spacing:.02em}.brand span{color:var(--violet)}
 .links{display:flex;gap:4px;align-items:center}
 .links a{font-size:14px;font-weight:400;color:var(--soft);text-decoration:none;padding:6px 12px;border-radius:999px}
