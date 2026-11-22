@@ -10,7 +10,7 @@
   },
   "north_star": {
     "metric": "search a common word across 5,000 saved sessions",
-    "baseline": "grep -rl on the same files",
+    "baseline": "ripgrep (rg -l) over the same files, on the same machine",
     "target": {
       "ratio": 10,
       "better": "lower"
