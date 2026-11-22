@@ -1,1 +1,2 @@
 {"value":8.7,"baseline":18.4,"baselineTool":"ripgrep","grepMs":22.5,"unit":"ms","measuredAt":"2026-11-22T01:36:11.754Z","sessions":5000,"run":"https://github.com/flisk-sh/brain/actions/runs/44972084821","commit":"76fa8f983a9c8b96fdc5a58ec211511488fe38c2"}
+{"value":24,"baseline":37.3,"baselineTool":"ripgrep","grepMs":39,"unit":"ms","measuredAt":"2026-11-22T02:13:28.144Z","sessions":5000,"run":"https://github.com/flisk-sh/brain/actions/runs/44975002571","commit":"b50a3e1ec38bb202aa7de9d378e50529abd1989a"}
