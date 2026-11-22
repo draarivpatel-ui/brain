@@ -1,13 +1,13 @@
 {
- "value": 10.9,
- "baseline": 16.2,
+ "value": 14,
+ "baseline": 27.7,
  "baselineTool": "ripgrep",
- "grepMs": 18,
+ "grepMs": 40.3,
  "unit": "ms",
- "measuredAt": "2026-11-22T11:03:59.945Z",
+ "measuredAt": "2026-11-22T11:04:25.617Z",
  "sessions": 5000,
  "os": "linux x64",
  "cores": 4,
- "run": "https://github.com/flisk-sh/brain/actions/runs/45015415468",
+ "run": "https://github.com/flisk-sh/brain/actions/runs/45015446979",
  "commit": "f75caf6bb23578dcc114c86e72f1e86842a8e1e5"
 }
