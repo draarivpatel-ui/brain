@@ -104,6 +104,9 @@ console.log(JSON.stringify(out, null, 1).slice(0, 6000));
 
 // North star (read by `gel north-star`): common-word search over 5,000 saved sessions, Brain vs ripgrep `rg -l`.
 const big5 = out.corpus.at(-1);
-const ns = { value: big5.searchCommonMs, baseline: big5.rgCommonMs ?? big5.grepCommonMs, baselineTool: big5.rgCommonMs ? "ripgrep" : "grep", grepMs: big5.grepCommonMs, unit: "ms", measuredAt: new Date().toISOString(), sessions: big5.sessions };
+// The baseline is always ripgrep. Without `rg` the old code fell back to grep, so the same metric meant a different tool on
+// a different machine (and GNU grep, BSD grep and rg differ by several times). No rg means no measurement: exit 2.
+if (big5.rgCommonMs == null) { console.error("north star: ripgrep (rg) is not installed, so there is nothing fair to compare with. Install it and run again."); process.exit(2); }
+const ns = { value: big5.searchCommonMs, baseline: big5.rgCommonMs, baselineTool: "ripgrep", grepMs: big5.grepCommonMs, unit: "ms", measuredAt: new Date().toISOString(), sessions: big5.sessions, os: platform() + " " + arch(), cores: cpus().length };
 writeFileSync(join(new URL("..", import.meta.url).pathname, "docs", "north-star", "result.json"), JSON.stringify(ns, null, 2) + "\n");
 console.log(JSON.stringify(ns)); // last line: `gel north-star --measure` parses it
