@@ -6,7 +6,8 @@
     "north-star": "block",
     "five-second-test": "block",
     "secret-scan": "block",
-    "done-without-green": "block"
+    "done-without-green": "block",
+    "product-brief": "report"
   },
   "north_star": {
     "metric": "search a common word across 5,000 saved sessions",
@@ -24,5 +25,14 @@
     "pages": [
       "landing/index.html"
     ]
+  },
+  "repo_health": {
+    "inherit": [
+      "CONTRIBUTING",
+      "SECURITY"
+    ]
+  },
+  "reasons": {
+    "product-brief": "no product brief with measured what/who/why/how/where/when numbers exists yet; not inventing one"
   }
 }

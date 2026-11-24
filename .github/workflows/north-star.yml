@@ -18,8 +18,8 @@ jobs:
   measure:
     permissions:
       contents: write
-    uses: flisk-sh/gel/.github/workflows/north-star.yml@382f39a61785c15f0f3cab97ee4afdb83a2cc08f # main, north-star keeps a measure's failure (gel#68)
+    uses: flisk-sh/gel/.github/workflows/north-star.yml@15df52e9c5afa17814fdb336588e677f72feb40a # v1.17.0 (+next-cta)
     with:
-      gel_ref: 382f39a61785c15f0f3cab97ee4afdb83a2cc08f
+      gel_ref: 15df52e9c5afa17814fdb336588e677f72feb40a
       timeout: 20
       setup: sudo apt-get install -y -qq ripgrep

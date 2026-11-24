@@ -3,10 +3,11 @@ on: [pull_request, push]
 permissions: { contents: read }
 jobs:
   gel:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { fetch-depth: 0 }
-      - uses: flisk-sh/gel@bf44a026dd4e283b3a47c100d5dc0e09112a2464 # v1.8.0
+      - uses: flisk-sh/gel@15df52e9c5afa17814fdb336588e677f72feb40a # v1.17.0 (+next-cta)
       - name: Run privacy filter tests
         run: node --test
